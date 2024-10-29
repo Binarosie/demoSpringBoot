@@ -31,10 +31,10 @@
       </c:if>
 
       <td><img height="150" width="200" src="${imgUrl}" /></td>
-      <td>${cate.categoryName}</td>
+      <td>${cate.name}</td>
       <td>${cate.status}</td>
-      <td><a href="<c:url value='/admin/category/edit?id=${cate.categoryID}'/>">Sửa</a>
-        | <a href="<c:url value='/admin/category/delete?id=${cate.categoryID}'/>" >Xóa</a></td>
+      <td><a href="<c:url value='/admin/category/edit/${cate.ID}'/>">Sửa</a>
+        | <a href="<c:url value='/admin/category/delete/${cate.ID}'/>" >Xóa</a></td>
     </tr>
   </c:forEach>
 </table>

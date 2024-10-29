@@ -7,14 +7,14 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="jakarta.tags.core" %>
-
-<form action="<c:url value='/admin/category/insert'></c:url>" method="post" enctype="multipart/form-data">
+<h2>Add</h2>
+<form action="<c:url value='/admin/category/save'></c:url>" method="post">
 
   <input type="text" id="categoryid" name="categoryid" hidden="hidden"
-         value="${cate.categoryID}">
-
+         value="${cate.ID}">
+  <input type="hidden" name="isEdit" value="${cate.isEdit}">
   <label for="fname">Category name:</label><br>
-  <input type="text" id="fname" name="categoryname" value="${cate.categoryName}"><br>
+  <input type="text" id="fname" name="name" value="${cate.name}"><br>
   <label for="images">Images:</label><br>
   <input type="file" onchange="chooseFile(this)" id="images" name="images">
   <br/>
@@ -32,5 +32,10 @@
   <label for="ston">Online</label><br>
   <input type="radio" id="stoff" name="status" value="0" ${cate.status == 0 ? 'checked' : ''}>
   <label for="stoff">Offline</label><br>
-  <input type="submit" value="Insert">
+  <c:if test="${cate.isEdit}">
+    <input type="submit" value="Update">
+  </c:if>
+  <c:if test="${!cate.isEdit}">
+    <input type="submit" value="Insert">
+  </c:if>
 </form>
